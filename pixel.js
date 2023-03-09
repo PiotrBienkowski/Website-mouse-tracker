@@ -2,11 +2,13 @@ lastUpdate = parseInt(Date.now() / 1000);
 lastAdd = parseInt(Date.now() / 1000);
 updateFrequency = 3;
 addFrequency = 0.5;
+token = "f33884e9d6cf5dd1a44ab690d57acba8"
+url = "http://127.0.0.1:8000/add-data"
 
 class Data {
     constructor(x, y) {
         this.x = x;
-        this.y = x;
+        this.y = y;
     }
 }
 
@@ -33,8 +35,28 @@ function log(userX, userY, pageYOffset) {
 function addToApi() {
     if (checkUpdate()) {
         lastUpdate = parseInt(Date.now() / 1000);
+        sendToAPI();
         console.log("-----ADDED-----");
     }
+}
+
+function sendToAPI() {
+    let data = {
+        token: token,
+        list: tmpData
+    };
+      
+    fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error(error));
+      
 }
 
 function checkAdd() {
