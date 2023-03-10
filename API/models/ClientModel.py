@@ -35,4 +35,9 @@ def create_client(unique_hash, proportion, db, ClientClass):
             "error":  str(e)
         }
 
-
+def get_proportion(token, db, ClientClass):
+    proportion = ClientClass.query.filter_by(unique_hash=token).first()
+    if proportion:
+        return proportion.proportion
+    else:
+        return -1

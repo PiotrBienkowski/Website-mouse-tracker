@@ -10,6 +10,7 @@ from flask_restful import Api, Resource
 
 import controllers.ClientController as ClientController
 import controllers.DataController as DataController
+import controllers.RaportController as RaportController
 
 app = Flask(__name__)
 CORS(app)
@@ -61,3 +62,10 @@ def all_datas():
 def add_data():
     data = request.get_json()
     return DataController.add_datas(data, db, Data)
+
+
+# ----RAPORT----
+@app.route('/generate-raport', methods=['GET'])
+def generate_raport():
+    RaportController.create_raport("97c98f9d4eb1da15ba542af8abcd12d4", db, Data, Client)
+    return "ok"

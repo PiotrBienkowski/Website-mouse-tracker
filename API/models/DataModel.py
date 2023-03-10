@@ -36,3 +36,7 @@ def add_data(token, x, y, db, DataClass):
             "error":  str(e),
             "timestamp": lib.get_timestamp()
         }
+
+def get_data(token, db, DataClass):
+    data = DataClass.query.filter_by(token=token).all()
+    return data
