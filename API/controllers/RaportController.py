@@ -1,6 +1,6 @@
 import lib
 from PIL import Image, ImageDraw
-import settings.settings as settings
+import config.config as config
 import models.DataModel as DataModel
 import models.ClientModel as ClientModel
 
@@ -14,10 +14,10 @@ def create_raport(token, db, DataClass, ClientClass):
     
 def build_matrix(data, proportion):
     tab = []
-    period = settings.PERIOD
+    period = config.PERIOD
 
-    tmp_x_size = int(settings.MATRIX_WIDTH // (settings.MATRIX_WIDTH * period))
-    tmp_y_size = int((int(settings.MATRIX_WIDTH * proportion) + 1) // (settings.MATRIX_WIDTH * period))
+    tmp_x_size = int(config.MATRIX_WIDTH // (config.MATRIX_WIDTH * period))
+    tmp_y_size = int((int(config.MATRIX_WIDTH * proportion) + 1) // (config.MATRIX_WIDTH * period))
 
     for i in range(tmp_y_size + 1):
         tab.append([])
@@ -35,8 +35,8 @@ def build_matrix(data, proportion):
     return generate_image(tab, proportion, max_value, period)
 
 def generate_image(tab, proportion, max_value, period):
-    width = int(settings.MATRIX_WIDTH)
-    height = int(settings.MATRIX_WIDTH * proportion)
+    width = int(config.MATRIX_WIDTH)
+    height = int(config.MATRIX_WIDTH * proportion)
     square_size = int(width * period)
 
     image = Image.new('RGBA', (width, height), (0, 0, 0, 0))
