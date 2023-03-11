@@ -3,7 +3,8 @@
 # flask run
 
 import lib
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, jsonify, request, render_template, make_response
+from flask.helpers import send_file
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_restful import Api, Resource
@@ -16,7 +17,7 @@ app = Flask(__name__)
 CORS(app)
 api = Api(app)
 
-DEBUG = True
+DEBUG = False
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 db = SQLAlchemy(app)
@@ -47,7 +48,10 @@ def all_clients():
 
 @app.route('/create-client', methods=['GET'])
 def create_client():
-    proportion = 2
+    if 'proportion' not in request.args:
+        return make_response(jsonify({'error': 'Proportion error'}), 400)
+    proportion = request.args['proportion']
+    
     return ClientController.create_client(proportion, db, Client)
     
 # ----DATA----
@@ -67,5 +71,14 @@ def add_data():
 # ----RAPORT----
 @app.route('/generate-raport', methods=['GET'])
 def generate_raport():
-    RaportController.create_raport("7de25604fbb049f51a0a248cc3d2fed2", db, Data, Client)
-    return "ok"
+    if 'token' not in request.args:
+        return make_response(jsonify({'error': 'Token error'}), 400)
+
+    token = request.args['token']
+    ret = RaportController.create_raport(token, db, Data, Client)
+
+    if ret == -1:
+        return make_response(jsonify({'error': 'Token error'}), 400)
+    
+    file_path = ret
+    return send_file(file_path, as_attachment=True)

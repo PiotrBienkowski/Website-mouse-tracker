@@ -9,14 +9,12 @@ def create_raport(token, db, DataClass, ClientClass):
     data = DataModel.get_data(token, db, DataClass)
     proportion = ClientModel.get_proportion(token, db, ClientClass);
     if proportion == -1:
-        error = True
-    build_matrix(data, proportion)
+        return -1
+    return build_matrix(data, proportion)
     
-
-
 def build_matrix(data, proportion):
     tab = []
-    period = 0.1
+    period = settings.PERIOD
 
     tmp_x_size = int(settings.MATRIX_WIDTH // (settings.MATRIX_WIDTH * period))
     tmp_y_size = int((int(settings.MATRIX_WIDTH * proportion) + 1) // (settings.MATRIX_WIDTH * period))
@@ -31,20 +29,17 @@ def build_matrix(data, proportion):
     for i in data:
         box_x = int(tmp_x_size * (i.x / 100))
         box_y = int(tmp_y_size * (i.y / 100))
-        
         tab[box_y][box_x] += 1
         max_value = max(max_value, tab[box_y][box_x])
 
-    generate_image(tab, proportion, max_value)
+    return generate_image(tab, proportion, max_value, period)
 
-def generate_image(tab, proportion, max_value):
-    print(tab)
+def generate_image(tab, proportion, max_value, period):
     width = int(settings.MATRIX_WIDTH)
     height = int(settings.MATRIX_WIDTH * proportion)
-    square_size = int(width * 0.1)
+    square_size = int(width * period)
 
-    image = Image.new('RGBA', (width, height), (255, 255, 255, 255))
-
+    image = Image.new('RGBA', (width, height), (0, 0, 0, 0))
     image_draw = ImageDraw.Draw(image)
 
     tmpX = 0
@@ -58,4 +53,6 @@ def generate_image(tab, proportion, max_value):
             tmpY += 1
         tmpX += 1
 
-    image.save('output.png')
+    name = "outputs/" + str(lib.get_hash()) + ".png"
+    image.save(name)
+    return name

@@ -1,0 +1,230 @@
+/* Resetowanie stylów dla elementów */
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+/* Stylowanie elementów głównych */
+body {
+	font-family: 'Open Sans', sans-serif;
+	line-height: 1.6;
+}
+
+header {
+	background-color: #f8f8f8;
+	padding: 20px;
+}
+
+header h1 {
+	font-size: 36px;
+	margin: 0;
+}
+
+nav {
+	display: flex;
+	align-items: center;
+}
+
+nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+nav li {
+	margin-left: 20px;
+}
+
+nav a {
+	color: #333;
+	text-decoration: none;
+	font-weight: 700;
+}
+
+nav a:hover {
+	color: #555;
+}
+
+section {
+	padding: 80px 0;
+}
+
+.container {
+	max-width: 1100px;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+
+h2 {
+	font-size: 30px;
+	margin-bottom: 30px;
+}
+
+p {
+	margin-bottom: 30px;
+}
+
+.btn {
+	display: inline-block;
+	background-color: #2d6a4f;
+	color: #fff;
+	padding: 12px 20px;
+	border-radius: 5px;
+	text-decoration: none;
+}
+
+.btn:hover {
+	background-color: #418268;
+}
+
+/* Stylowanie sekcji Hero */
+#hero {
+	/* Wysokość sekcji Hero ma wynosić 100vh (100% wysokości okna przeglądarki) */
+	height: 100vh;
+	background-image: url('https://picsum.photos/1920/1080');
+	background-size: cover;
+	background-position: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+#hero h1 {
+	font-size: 60px;
+	margin-bottom: 20px;
+	color: #fff;
+	text-shadow: 2px 2px #333;
+}
+
+#hero p {
+	font-size: 24px;
+	color: #fff;
+	text-shadow: 2px 2px #333;
+}
+
+/* Stylowanie sekcji O nas */
+#about {
+	background-color: #f8f8f8;
+}
+
+.about-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.about-text {
+	flex-basis: 60%;
+	padding-right: 20px;
+}
+
+.about-text h2 {
+	font-size: 36px;
+	margin-bottom: 20px;
+}
+
+.about-text p {
+	margin-bottom: 30px;
+}
+
+.about-image {
+	flex-basis: 30%;
+}
+
+.about-image img {
+	width: 100%;
+}
+
+/* Stylowanie sekcji Usługi */
+#services {
+	background-color: #fff;
+}
+
+.services-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.service {
+	flex-basis: 30%;
+	margin-bottom: 30px;
+}
+
+.service h3 {
+	font-size: 24px;
+	margin-bottom: 10px;
+}
+
+.service p {
+	margin-bottom: 20px;
+}
+
+/* Stylowanie sekcji Realizacje */
+#projects {
+	background-color: #f8f8f8;
+}
+
+.projects-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.project {
+	flex-basis: 45%;
+	margin-bottom: 30px;
+}
+
+.project img {
+	width: 100%;
+}
+
+/* Stylowanie sekcji Kontakt */
+#contact {
+	background-color: #fff;
+}
+
+form {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+label {
+	flex-basis: 100%;
+	font-size: 18px;
+	margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+	flex-basis: 100%;
+	padding: 10px;
+	margin-bottom: 20px;
+	border: none;
+	border-radius: 5px;
+}
+
+textarea {
+	height: 150px;
+}
+
+button[type="submit"] {
+	background-color: #2d6a4f;
+	color: #fff;
+	padding: 12px 20px;
+	border: none;
+	border-radius: 5px;
+	font-size: 18px;
+	cursor: pointer;
+}
+
+button[type="submit"]:hover {
+	background-color: #418268;
+}
