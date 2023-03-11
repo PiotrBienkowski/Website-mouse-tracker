@@ -67,5 +67,5 @@ def add_data():
 # ----RAPORT----
 @app.route('/generate-raport', methods=['GET'])
 def generate_raport():
-    RaportController.create_raport("97c98f9d4eb1da15ba542af8abcd12d4", db, Data, Client)
+    RaportController.create_raport("7de25604fbb049f51a0a248cc3d2fed2", db, Data, Client)
     return "ok"

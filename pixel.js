@@ -2,7 +2,7 @@ lastUpdate = parseInt(Date.now() / 1000);
 lastAdd = parseInt(Date.now() / 1000);
 updateFrequency = 3;
 addFrequency = 0.5;
-token = "97c98f9d4eb1da15ba542af8abcd12d4"
+token = "7de25604fbb049f51a0a248cc3d2fed2"
 url = "http://127.0.0.1:8000/add-data"
 
 class Data {
