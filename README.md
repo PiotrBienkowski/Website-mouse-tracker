@@ -1,5 +1,5 @@
 # Website mouse tracker
-An analytical and feedback tool that helps website and mobile app owners understand how users interact with their products. The report shows where and with what frequency users use the site. 
+An analytical and feedback tool that helps website owners understand how users interact with their products. The report shows where and with what frequency users use the site. 
 ## Pixel
 Pixel coded in JavaScript. It allows you to send the user's mouse position to the API. Thanks to this, the website administrator can track the behavior of users on the website.
 
